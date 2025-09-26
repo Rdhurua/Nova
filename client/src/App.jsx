@@ -9,14 +9,16 @@ import Profile from './pages/Profile'
 import CreatePost from './pages/CreatePost'
 import Layout from './pages/Layout'
 import {useUser} from '@clerk/clerk-react'
-
+import Loading from './components/Loading'
+import { Sidebar } from 'lucide-react'
+import StoriesBar from './components/StoriesBar'
 const App = () => {
   const {user}=useUser();
   return (
     <>
       <Routes>
         <Route path='/' element={!user?<Login/>:<Layout/>}>
-         <Route path='/feed' element={<Feed/>}/>
+         <Route path='/' element={<Feed/>}/>
          <Route path='/messages/:userId' element={<Messages/>}/>
          <Route path='/connections' element={<Connections/>}/>
          <Route path='/discover' element={<Discover/>}/>
@@ -25,6 +27,8 @@ const App = () => {
          <Route path='create-post' element={<CreatePost/>}/>
         </Route>
       </Routes>
+      {/* <Loading/> */}
+      {/* <StoriesBar/> */}
     </>
   )
 }
