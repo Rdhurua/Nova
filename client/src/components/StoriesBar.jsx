@@ -40,6 +40,18 @@ const StoriesBar = () => {
           {story.content}
         </p>
         <p className="absolute bottom-1 right-2 z-10 text-xs text-white">{moment(story.createdAt).fromNow()}</p>
+       
+       {story.media_type!="text" &&(
+
+            <div className='absolute inset-0 z-1 rounded-lg bg-black overflow-hidden'>
+              {
+          story.media_type=="image"?
+           <img src={story.media_url} alt="" className='h-full w-full object-cover hover:scale-110 transition duration-500 opacity-70 hover:opacity-80' />:<video src={story.media_url} className='h-full w-full object-cover hover:scale-110 transition duration-500 opacity-70 hover:opacity-80'/>
+        }
+
+            </div>
+       )}
+        
       </div>
     ))}
   </div>
