@@ -12,10 +12,13 @@ import {useUser} from '@clerk/clerk-react'
 import Loading from './components/Loading'
 import { Sidebar } from 'lucide-react'
 import StoriesBar from './components/StoriesBar'
+import {Toaster} from 'react-hot-toast'
+
 const App = () => {
   const {user}=useUser();
   return (
     <>
+        <Toaster/>
       <Routes>
         <Route path='/' element={!user?<Login/>:<Layout/>}>
          <Route path='/' element={<Feed/>}/>
