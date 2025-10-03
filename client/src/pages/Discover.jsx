@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { dummyConnectionsData } from '../assets/assets';
 import { Search } from 'lucide-react';
-
+import UserCard from '../components/UserCard';
+import Loading from '../components/Loading'
 const Discover = () => {
   const [input,setInput]=useState('');
   const [users,setUsers]=useState(dummyConnectionsData);
@@ -41,12 +42,20 @@ const Discover = () => {
          <div className='p-6'>
             <div className='relative'>
               <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5 '/>
-              <input type="text" placeholder='Search people by name, username, bio, or location...' className='pl-10 sm:pl-12 py-2 w-full border border-gray-300 rounded-md max-sm:text-sm'/>
+              <input type="text" placeholder='Search people by name, username, bio, or location...' className='pl-10 sm:pl-12 py-2 w-full border border-gray-300 rounded-md max-sm:text-sm' onChange={(e)=>setInput(e.target.value)} onKeyUp={handleSearch} value={input}/>
             </div>
          </div>
-
          </div>
 
+         <div className='flex flex-wrap gap-6'>
+            {users.map((user)=>(
+              <UserCard user={user} key={user._id}/>
+            ))}
+         </div>
+          
+          {
+            loading && (<Loading height='60vh'/>)
+          }
 
          </div>
     </div>
