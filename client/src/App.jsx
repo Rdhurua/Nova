@@ -13,6 +13,7 @@ import Loading from './components/Loading'
 import { Sidebar } from 'lucide-react'
 import StoriesBar from './components/StoriesBar'
 import {Toaster} from 'react-hot-toast'
+import ChatBox from './pages/ChatBox.jsx'
 
 const App = () => {
   const {user}=useUser();
@@ -22,7 +23,9 @@ const App = () => {
       <Routes>
         <Route path='/' element={!user?<Login/>:<Layout/>}>
          <Route path='/' element={<Feed/>}/>
-         <Route path='/messages/:userId' element={<Messages/>}/>
+         <Route path='/messages' element={<Messages/>}/>
+
+         <Route path='/messages/:userId' element={<ChatBox/>}/>
          <Route path='/connections' element={<Connections/>}/>
          <Route path='/discover' element={<Discover/>}/>
          <Route path='/profile' element={<Profile/>}/>
