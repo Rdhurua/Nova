@@ -6,6 +6,7 @@ import UserProfile from "../components/UserProfile.jsx";
 import PostCard from "../components/PostCard.jsx";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import ProfileModel from "../components/ProfileModel.jsx";
 
 const Profile = () => {
   const { profileId } = useParams();
@@ -115,7 +116,7 @@ const Profile = () => {
         </div>
       </div>
      {
-      showEdit && <p>show profile edit</p>
+      showEdit && <ProfileModel setShowEdit={setShowEdit}/>
      }
 
     </div>
